@@ -27,27 +27,29 @@
 (defun add-subfolders-to-load-path (parent-dir)
   "Add all level PARENT-DIR subdirs to the `load-path'."
   (dolist (f (directory-files parent-dir))
-    (let ((name (expand-file-name f parent-dir)))
+    (let ((name (expand-file-name f parent-dir)))  
       (when (and (file-directory-p name)
                  (not (string-prefix-p "." f)))
         (add-to-list 'load-path name)
-        (add-subfolders-to-load-path name)))))
+        (add-subfolders-to-load-path name)))))  
 
 (add-to-list 'load-path core-dir)
-(add-to-list 'load-path modules-dir)
+(add-to-list 'load-path modules-dir)  
 
 
 ;; Core
 
 (require 'core-bootstrap)
 (require 'core-paths)
+(require 'core-packages)
 (require 'core-ui)
 
 
 ;; Modules
 
-(if (display-graphic-p)
-    (require 'module-solarized))
+;;(if (display-graphic-p)
+;;    (require 'module-solarized))
 
 (require 'module-volatile-highlights)
 (require 'module-smartparens)
+(require 'module-git)
