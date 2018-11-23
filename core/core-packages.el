@@ -6,7 +6,7 @@
 
 (use-package expand-region
   :bind (("C-=" . er/expand-region)))
-  
+
 ;;(use-package spaceline
 ;;  :init
 ;;  (require 'spaceline-config)
